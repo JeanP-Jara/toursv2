@@ -1,0 +1,27 @@
+<div class="container mt-5">
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+            Autenticación
+            </div>
+            <div class="card-body">
+            <form #newForm="ngForm" (ngSubmit)="login(newForm)">
+                <div class="form-group">
+                <label for="username">Código de empleado</label>
+                <input type="text" class="form-control" placeholder="Ingrese código de usuario" name="c_codigo" #c_codigo="ngModel" [(ngModel)]="dataLogin.c_codigo" required>
+                </div>
+                <br>
+                <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" class="form-control"  placeholder="Ingrese contraseña" name="c_contrasena" #c_contrasena="ngModel" [(ngModel)]="dataLogin.c_contrasena" required>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary" name="login_btn_val" [disabled]="!newForm.form.valid">Ingresar</button>
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

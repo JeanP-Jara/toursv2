@@ -1,0 +1,79 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+>
+    
+<div>
+    <div class="contenido-titulo" style="width: 100%;
+                height: 500px;
+                background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../../../../../assets/lima-de-dia.jpg');
+                background-size: cover;
+                background-position: center;"
+    >
+        <div class="cont-titulo">
+            <h1 class="titulo">Los mejores Tours y Paquetes Turísticos en Perú</h1>
+        </div>
+    </div>
+    <div class="descripcion">
+        <span>
+            <b>Explora los Mejores Tours y Paquetes de Viaje a Perú</b>
+            Cultura, Historia, Tradiciones, Costumbres y Gastronomía. Descubre sus maravillas naturales: Hermosas Playas, Increíbles Dunas, Fértiles Campiñas, Blancos Nevados, Verdes Praderas, Misteriosos Lagos y Lagunas, Enmarañadas Selvas, Extensas Sabanas, Fantásticas Cascadas, Caprichosos Ríos y Cristalinos Arroyos. Vive experiencias únicas y emocionantes aventuras en el país más mega diverso de América del Sur y del mundo.
+            <b>Reserva nuestros más Exclusivos Tours y Paquetes Turísticos a Perú y disfruta de unas excelentes vacaciones en la Tierra de los Incas.</b>
+            <br>
+            <br>
+            <b>Visita Perú, la perla del pacífico y el lugar de ensueño del mundo</b>
+            , donde aún perviven la herencia cultural del continente americano. Anímate y visita el Perú, en familia o amigos, a disfrutar de increíbles aventuras en los que descubrirás los colores, sonidos y sabores de este país milenario. Y, sobre todo, a
+            <b>compartir momentos únicos e inolvidables.</b>
+        </span>
+        <div class="callout callout-default">
+            <em>
+                Deja de darle tantas vueltas a tu próximo viaje y empieza a recorrer el Perú. Elige y reserva, desde la comodidad de tu hogar sin ningún costo adicional, el paquete turístico de tu preferencia. Y recorre con nosotros los más increíbles.
+                <b>Lugares Turísticos de Perú.</b>
+            </em> 
+        </div>
+    </div>
+
+    <div class="descripcion" style="background-color: #e1e1e1;">
+        <h2>Paquetes turísticos</h2>
+        <br>
+        <p>Explora el patrimonio histórico - cultural de Perú y disfruta de momentos únicos e inolvidables</p>
+        <div style="display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    flex-wrap:wrap;">
+            <div *ngFor="let e of listTours" >
+                <div class="card" style="width: 12rem;">
+                    <img [src]="e.c_nombre" class="card-img-top" alt="" width="150" height="150">
+                    <div class="card-body">
+                        <h4 class="card-title"> {{e.nombre}} </h4>                        
+                        <a  class="btn btn-primary">
+                            Desde {{e.precio}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="descripcion">
+        <h2>Excursiones de Trekking & Hiking</h2>
+        <br>
+        <p>Recorre a pie las rutas de senderismo más impresionantes de América y del Mundo</p>
+        <div style="display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    flex-wrap:wrap;">
+            <div *ngFor="let e of listTours2" >
+                <div class="card" style="width: 12rem;">
+                    <img [src]="e.c_nombre" class="card-img-top" alt="" width="150" height="150">
+                    <div class="card-body">
+                        <h4 class="card-title"> {{e.nombre}} </h4>                        
+                        <a  class="btn btn-primary">
+                            Desde {{e.precio}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

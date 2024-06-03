@@ -1,0 +1,42 @@
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 0;
+}
+
+.contenedor-footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.seccion-footer {
+    flex: 1;
+    margin: 0 20px;
+}
+
+.seccion-footer h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.seccion-footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.seccion-footer ul li {
+    margin-bottom: 5px;
+}
+
+.seccion-footer ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.seccion-footer ul li a:hover {
+    text-decoration: underline;
+}
+
+.autor-footer{
+    background-color: black;
+}
