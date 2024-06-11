@@ -15,7 +15,7 @@ import { Tour } from '../../tours/models/tour';
 })
 export class AdminToursComponent implements OnInit {
 
-  displayedColumns: string[] = ['editar','nombre', 'precio', 'departamento','lugar','c_disponibilidad','n_edad_min','n_person_max','n_id_tipo_tour','eliminar'];
+  displayedColumns: string[] = ['editar','nombre', 'precio', 'departamento','lugar','c_disponibilidad','n_edad_min','n_person_max','c_desripcion','eliminar'];
   public tabla!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
@@ -35,6 +35,8 @@ export class AdminToursComponent implements OnInit {
   listarTours(){
     this._tours_service.getToursAll({}).subscribe((res=>{
       if(res.estado){
+        console.log(res.data);
+        
         this.tabla = new MatTableDataSource<any>(res.data);
         this.tabla.sort = this.sort;
         this.tabla.paginator = this.paginator;

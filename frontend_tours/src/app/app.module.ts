@@ -32,6 +32,16 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AdminToursEditarComponent } from './features/admin/admin-tours-editar/admin-tours-editar.component';
 import { AdminActividadComponent } from './features/admin/admin-actividad/admin-actividad.component';
 import { AdminActividadEditarComponent } from './features/admin/admin-actividad-editar/admin-actividad-editar.component';
+import {MatSelectModule} from '@angular/material/select';
+import { SnackComponent } from './shared/components/snack/snack.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ConfirmComponent } from './shared/components/confirm/confirm.component';
+import { AdminDepartamentoComponent } from './features/admin/admin-departamento/admin-departamento.component';
+import { AdminDepartamentoEditarComponent } from './features/admin/admin-departamento-editar/admin-departamento-editar.component';
+import { AdminLugarComponent } from './features/admin/admin-lugar/admin-lugar.component';
+import { AdminLugarEditarComponent } from './features/admin/admin-lugar-editar/admin-lugar-editar.component';
+import { AdminTipoTourComponent } from './features/admin/admin-tipo-tour/admin-tipo-tour.component';
+import { AdminTipoTourEditarComponent } from './features/admin/admin-tipo-tour-editar/admin-tipo-tour-editar.component';
 
 
 @NgModule({
@@ -51,6 +61,14 @@ import { AdminActividadEditarComponent } from './features/admin/admin-actividad-
     AdminToursEditarComponent,
     AdminActividadComponent,
     AdminActividadEditarComponent,
+    SnackComponent,
+    ConfirmComponent,
+    AdminDepartamentoComponent,
+    AdminDepartamentoEditarComponent,
+    AdminLugarComponent,
+    AdminLugarEditarComponent,
+    AdminTipoTourComponent,
+    AdminTipoTourEditarComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +87,9 @@ import { AdminActividadEditarComponent } from './features/admin/admin-actividad-
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule,
+    MatSnackBarModule
   ],
   providers: [
     {provide: APP_BASE_HREF, useValue: '/' },

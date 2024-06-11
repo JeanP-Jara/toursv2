@@ -6,10 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidenav-bar.component.css']
 })
 export class SidenavBarComponent implements OnInit {
-
-  constructor() { }
-
   ngOnInit(): void {
   }
-
 }

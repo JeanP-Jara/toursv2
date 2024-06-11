@@ -2,3 +2,20 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+th{
+    color: white !important;
+    background: #3D5A80;
+}
+
+tr:nth-of-type(even) {
+    background-color: #F6F7F7;
+}
+
+tr:hover{
+    background-color: #E7EAED !important; 
+}
+
+mat-panel-title mat-icon{
+    color: #0D47A1;
+}

@@ -2,21 +2,33 @@
     <mat-sidenav mode="side" opened>
       <mat-toolbar>Menú</mat-toolbar>
       <mat-nav-list>
-        <a mat-list-item routerLink="/administracion">
-            <mat-icon>dashboard</mat-icon>
-            <span>DashBoard</span>
+        <a mat-list-item routerLink="/administracion" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+          <mat-icon>dashboard</mat-icon>
+          <span>DashBoard</span>
         </a>
-        <a mat-list-item routerLink="/administracion/usuario">
-            <mat-icon>group</mat-icon>
-            Usuarios
+        <a mat-list-item routerLink="/administracion/usuario" routerLinkActive="active-link">
+          <mat-icon>group</mat-icon>
+          Usuarios
         </a>
-        <a mat-list-item routerLink="/administracion/tours">
+        <a mat-list-item routerLink="/administracion/tours" routerLinkActive="active-link">
           <mat-icon>travel_explore</mat-icon>
           Tours
         </a>
-        <a mat-list-item routerLink="/administracion/actividades">
+        <a mat-list-item routerLink="/administracion/actividades" routerLinkActive="active-link">
           <mat-icon>add_task</mat-icon>
           Actividades
+        </a>
+        <a mat-list-item routerLink="/administracion/departamento" routerLinkActive="active-link">
+          <mat-icon>apartment</mat-icon>
+          Departamento
+        </a>
+        <a mat-list-item routerLink="/administracion/lugar" routerLinkActive="active-link">
+          <mat-icon>pin_drop</mat-icon>
+          Lugar
+        </a>
+        <a mat-list-item routerLink="/administracion/tipo_tour" routerLinkActive="active-link">
+          <mat-icon>format_size</mat-icon>
+          Tipo Tour
         </a>
       </mat-nav-list>
     </mat-sidenav>

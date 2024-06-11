@@ -20,9 +20,10 @@ const getTours = (request, response) => {
 
 const getToursAll = (request, response) => {
     //console.log("getTours");
-    let cadena = `SELECT t.*, d.c_nombre as departamento, l.c_nombre as lugar  FROM tours t
+    let cadena = `SELECT t.*, d.c_nombre as departamento, l.c_nombre as lugar, tp.c_desripcion  FROM tours t
         LEFT OUTER JOIN departamento d on d.n_id_departamento = t.n_id_departamento
-        LEFT OUTER JOIN lugar l on l.n_id_lugar = t.n_id_lugar
+        LEFT OUTER JOIN lugar l on l.n_id_lugar = t.n_id_lugar        
+        LEFT OUTER JOIN tipo_tour tp on tp.n_id_tipo_tour = t.n_id_tipo_tour
     `
     conn.query(cadena, (error, results) => {
         if (error) {

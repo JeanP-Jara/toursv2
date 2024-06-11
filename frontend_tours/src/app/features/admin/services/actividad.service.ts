@@ -21,4 +21,25 @@ export class ActividadService {
     });
     return this.http.post<ResponseActividad>(`${this.apiUrl}actividad/getActividadAll`, request, { headers: reqHeader });
   }
+
+  actualizarActividad(request:any): Observable<ResponseActividad> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post<ResponseActividad>(`${this.apiUrl}actividad/actualizarActividad`, request, { headers: reqHeader });
+  }
+
+  agregarActividad(request:any): Observable<ResponseActividad> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post<ResponseActividad>(`${this.apiUrl}actividad/agregarActividad`, request, { headers: reqHeader });
+  }
+
+  eliminarActividad(request:any): Observable<ResponseActividad> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post<ResponseActividad>(`${this.apiUrl}actividad/eliminarActividad`, request, { headers: reqHeader });
+  }
 }

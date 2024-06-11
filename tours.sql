@@ -2,12 +2,12 @@
 -- use tours;
 
 CREATE TABLE departamento (
-    n_id_departamento INT PRIMARY KEY,
+    n_id_departamento INT AUTO_INCREMENT PRIMARY KEY,
     c_nombre VARCHAR(250)
 );
 
 CREATE TABLE lugar (
-    n_id_lugar INT PRIMARY KEY,
+    n_id_lugar INT AUTO_INCREMENT PRIMARY KEY,
     n_id_departamento INT,
     c_nombre VARCHAR(250),
     FOREIGN KEY (n_id_departamento) REFERENCES departamento(n_id_departamento)
@@ -16,7 +16,7 @@ CREATE TABLE lugar (
 -- select nombre, precio from tours;
 
 CREATE TABLE tours (
-    n_id_tours INT PRIMARY KEY,
+    n_id_tours INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(250),
     precio INT,
     n_id_departamento INT,
@@ -31,28 +31,28 @@ CREATE TABLE tours (
 );
 
 CREATE TABLE actividad (
-    n_id_actividad INT PRIMARY KEY,
+    n_id_actividad INT AUTO_INCREMENT PRIMARY KEY,
     n_id_tours INT,
     c_detalle VARCHAR(1000),
     FOREIGN KEY (n_id_tours) REFERENCES tours(n_id_tours)
 );
 
 CREATE TABLE contenido (
-    n_id_contenido INT PRIMARY KEY,
+    n_id_contenido INT AUTO_INCREMENT PRIMARY KEY,
     n_id_tours INT,
     c_detalle VARCHAR(1000),
     FOREIGN KEY (n_id_tours) REFERENCES tours(n_id_tours)
 );
 
 CREATE TABLE no_contenido (
-    n_idno_contenido INT PRIMARY KEY,
+    n_idno_contenido INT AUTO_INCREMENT PRIMARY KEY,
     n_id_tours INT,
     c_detalle VARCHAR(1000),
     FOREIGN KEY (n_id_tours) REFERENCES tours(n_id_tours)
 );
 
 CREATE TABLE recomendacion (
-    n_id_recomendacion INT PRIMARY KEY,
+    n_id_recomendacion INT AUTO_INCREMENT PRIMARY KEY,
     n_id_tours INT,
     c_detalle VARCHAR(1000),
     FOREIGN KEY (n_id_tours) REFERENCES tours(n_id_tours)
@@ -206,7 +206,7 @@ INSERT INTO recomendacion (n_id_recomendacion, n_id_tours, c_detalle) VALUES (24
 INSERT INTO recomendacion (n_id_recomendacion, n_id_tours, c_detalle) VALUES (25, 5, 'Dinero extra para gastos personales adicionales y gratitudes.');
 
 CREATE TABLE foto(
-	n_id_foto INT PRIMARY KEY,
+	n_id_foto INT AUTO_INCREMENT PRIMARY KEY,
     c_nombre varchar(250)
 ); 
 INSERT INTO foto (n_id_foto, c_nombre) VALUES (1, 'tour-maras-moray-y-salineras-150x150.jpg');
@@ -225,7 +225,7 @@ ALTER TABLE tours ADD COLUMN n_id_foto int REFERENCES foto(n_id_foto);
 
 
 CREATE TABLE usuario(
-    id_usuario INT PRIMARY KEY,
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     c_codigo VARCHAR(8),
     c_contrasena VARCHAR(8)
 );
@@ -233,7 +233,7 @@ CREATE TABLE usuario(
 INSERT INTO usuario (id_usuario, c_codigo, c_contrasena) VALUES (1, '12345678', '13245678');
 
 CREATE TABLE tipo_tour(
-	n_id_tipo_tour INT PRIMARY KEY,
+	n_id_tipo_tour INT AUTO_INCREMENT PRIMARY KEY,
     c_codigo VARCHAR(50),
     c_desripcion VARCHAR(250)
  );

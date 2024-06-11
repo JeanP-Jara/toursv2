@@ -4,7 +4,7 @@ let local = {
     host: 'localhost',
     user: 'root',    
     password: 'root',
-    database: 'tours',    
+    database: 'tours2',    
     port: 3306
 }
 

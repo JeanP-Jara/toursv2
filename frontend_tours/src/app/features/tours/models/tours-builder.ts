@@ -15,6 +15,7 @@ export class TourBuilder{
     private c_nombre!: string;
     private departamento!: string;
     private lugar!: string;
+    private c_desripcion!: string
 
     public setIdTours(n_id_tours: number): TourBuilder {
         this.n_id_tours = n_id_tours;
@@ -86,6 +87,16 @@ export class TourBuilder{
         return this;
     }
 
+    public setDescripcion(Descripcion: string): TourBuilder {
+        this.c_desripcion = Descripcion;
+        return this;
+    }
+
+    public getDescripcion(Descripcion: string): TourBuilder {
+        this.c_desripcion = Descripcion;
+        return this;
+    }
+
     build(): Tour {
         return new classTour(
             this.n_id_tours,
@@ -101,7 +112,8 @@ export class TourBuilder{
             this.n_id_tipo_tour,
             this.c_nombre,
             this.departamento,
-            this.lugar
+            this.lugar,
+            this.c_desripcion
         );
     }
 }

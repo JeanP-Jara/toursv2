@@ -1,0 +1,30 @@
+<div class="titulo">    
+    <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+    <h1 mat-dialog-title>
+        <span>Edicción de Actividad</span>
+    </h1>
+</div>
+<form #newForm="ngForm" (ngSubmit)="guardar(newForm)">
+
+    <mat-dialog-content class="contenedor">
+        <mat-form-field appearance="fill" class="example-form">
+            <mat-label>Nombre</mat-label>
+            <input matInput [(ngModel)]="lugar.c_nombre" name="c_nombre">
+            <mat-hint class="error" *ngIf="lugar.c_nombre.length<3">debe tener mínimo de 3 dígitos</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="width: 40%;">
+            <mat-select placeholder="Tour" [(value)]="lugar.n_id_departamento" >
+              <mat-option *ngFor="let d of departamentos" [value]="d.n_id_departamento">
+                  {{d.c_nombre}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+    
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button button mat-stroked-button color="error" mat-dialog-close type="button">Cancel</button>
+        <button button mat-stroked-button color="primary" [mat-dialog-close]="true" cdkFocusInitial type="submit">Guardar</button>
+    </mat-dialog-actions>
+</form>
+

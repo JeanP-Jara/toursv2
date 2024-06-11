@@ -9,6 +9,9 @@ import { AdministracionComponent } from './features/admin/administracion/adminis
 import { AdminUsuarioComponent } from './features/admin/admin-usuario/admin-usuario.component';
 import { AdminToursComponent } from './features/admin/admin-tours/admin-tours.component';
 import { AdminActividadComponent } from './features/admin/admin-actividad/admin-actividad.component';
+import { AdminDepartamentoComponent } from './features/admin/admin-departamento/admin-departamento.component';
+import { AdminLugarComponent } from './features/admin/admin-lugar/admin-lugar.component';
+import { AdminTipoTourComponent } from './features/admin/admin-tipo-tour/admin-tipo-tour.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -23,6 +26,10 @@ const routes: Routes = [
       { path: 'usuario', component: AdminUsuarioComponent },
       { path: 'tours', component: AdminToursComponent },
       { path: 'actividades', component: AdminActividadComponent },
+      { path: 'departamento', component: AdminDepartamentoComponent },
+      { path: 'lugar', component: AdminLugarComponent },  
+      { path: 'tipo_tour', component: AdminTipoTourComponent },  
+      
     ]
   },
   { path: '**', redirectTo: '/tours' }, 

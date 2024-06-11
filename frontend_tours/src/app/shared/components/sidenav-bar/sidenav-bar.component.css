@@ -15,4 +15,14 @@
   mat-icon {
     margin-right: 10px;
   }
+
+  .active-link {
+    background-color: #3D5A80; 
+    color: #fff;
+    border-end-end-radius: 25px;
+    border-start-end-radius: 25px;
+  }
+
+
+
   

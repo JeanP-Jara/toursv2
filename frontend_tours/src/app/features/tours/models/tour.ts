@@ -12,7 +12,8 @@ export interface Tour {
     n_id_tipo_tour: number,
     c_nombre: string,
     departamento: string,
-    lugar: string
+    lugar: string,
+    c_desripcion: string
 }
 
 export interface ResponseTour{
@@ -37,5 +38,6 @@ export class classTour implements Tour {
         public c_nombre: string,
         public departamento: string,
         public lugar: string,
+        public c_desripcion: string
     ) {}
   }
