@@ -46,7 +46,7 @@
                     <img [src]="e.c_nombre" class="card-img-top" alt="" width="150" height="150">
                     <div class="card-body">
                         <h4 class="card-title"> {{e.nombre}} </h4>                        
-                        <a  class="btn btn-primary">
+                        <a  class="btn btn-primary" (click)="showTour(e)">
                             Desde {{e.precio}}
                         </a>
                     </div>

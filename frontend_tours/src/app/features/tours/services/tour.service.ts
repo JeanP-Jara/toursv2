@@ -45,5 +45,12 @@ export class TourService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
+  getDetalleTour(request:any): Observable<any> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post<any>(`${this.apiUrl}tours/getDetalleTour`, request, { headers: reqHeader });
+  }
+
 
 }

@@ -42,6 +42,9 @@ import { AdminLugarComponent } from './features/admin/admin-lugar/admin-lugar.co
 import { AdminLugarEditarComponent } from './features/admin/admin-lugar-editar/admin-lugar-editar.component';
 import { AdminTipoTourComponent } from './features/admin/admin-tipo-tour/admin-tipo-tour.component';
 import { AdminTipoTourEditarComponent } from './features/admin/admin-tipo-tour-editar/admin-tipo-tour-editar.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { AdminUsuarioEditarComponent } from './features/admin/admin-usuario-editar/admin-usuario-editar.component';
+
 
 
 @NgModule({
@@ -69,6 +72,7 @@ import { AdminTipoTourEditarComponent } from './features/admin/admin-tipo-tour-e
     AdminLugarEditarComponent,
     AdminTipoTourComponent,
     AdminTipoTourEditarComponent,
+    AdminUsuarioEditarComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,7 +93,8 @@ import { AdminTipoTourEditarComponent } from './features/admin/admin-tipo-tour-e
     MatButtonModule,
     MatDialogModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    GoogleMapsModule
   ],
   providers: [
     {provide: APP_BASE_HREF, useValue: '/' },

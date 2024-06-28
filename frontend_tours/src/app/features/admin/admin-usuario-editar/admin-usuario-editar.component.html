@@ -1,0 +1,26 @@
+<div class="titulo">    
+    <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+    <h1 mat-dialog-title>
+        <span>Edicción de Usuario</span>
+    </h1>
+</div>
+<form #newForm="ngForm" (ngSubmit)="guardar(newForm)">
+    <mat-dialog-content class="contenedor">  
+
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput [(ngModel)]="usuario.c_codigo" name="c_codigo">
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill">
+            <mat-label>Precio</mat-label>
+            <input matInput [(ngModel)]="usuario.c_contrasena" name="c_contrasena">
+        </mat-form-field>    
+      
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button button mat-stroked-button color="error" mat-dialog-close>Cancel</button>
+        <button button mat-stroked-button color="primary" [mat-dialog-close]="true" cdkFocusInitial type="submit">Guardar</button>
+    </mat-dialog-actions>
+</form>
+

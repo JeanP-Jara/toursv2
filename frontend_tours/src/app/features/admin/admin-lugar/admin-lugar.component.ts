@@ -69,7 +69,7 @@ export class AdminLugarComponent implements OnInit {
   }
 
   editar(element: any, enterAnimationDuration: string, exitAnimationDuration: string){    
-    console.log("opern", element);
+    console.log("open", element);
     
     const dialogRef = this.dialog.open(AdminLugarEditarComponent, {
       width: '750px',      

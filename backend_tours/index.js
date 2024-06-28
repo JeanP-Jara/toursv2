@@ -31,14 +31,19 @@ app.get('/', (request, response) => {
 })
 
 /****SEGURIDAD****/
-app.get('/api/seguridad/login', dbSeguridad.login);
+app.post('/api/seguridad/login', dbSeguridad.login);
 
 /****TOURS****/
 app.post('/api/tours/tour', dbTour.getTours);
 app.post('/api/tours/getToursAll', dbTour.getToursAll);
+app.post('/api/tours/getDetalleTour', dbTour.getDetalleTour);
+
 
 /****USUARIO****/
 app.post('/api/usuario/listarUsuarios', dbUsuario.listarUsuarios);
+app.post('/api/usuario/insertUsuario', dbUsuario.insertUsuario);
+app.post('/api/usuario/deleteUsuario', dbUsuario.deleteUsuario);
+app.post('/api/usuario/updateUsuario', dbUsuario.updateUsuario);
 
 /****ACTIVIDAD****/
 app.post('/api/actividad/getActividadAll', dbActividad.getActividadAll);

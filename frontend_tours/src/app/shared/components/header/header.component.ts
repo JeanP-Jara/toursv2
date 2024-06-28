@@ -12,4 +12,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public getToken(): any {
+    let currentUser = JSON.parse(localStorage.getItem("currentUser")!);
+    return currentUser;
+  }
+
 }

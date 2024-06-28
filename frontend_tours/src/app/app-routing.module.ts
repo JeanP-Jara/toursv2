@@ -32,6 +32,7 @@ const routes: Routes = [
       
     ]
   },
+  {path:'toursdetalle/:n_id_tours',component:TourDetailComponent},
   { path: '**', redirectTo: '/tours' }, 
 ];
 

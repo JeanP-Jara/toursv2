@@ -21,4 +21,33 @@ export class UsuarioService {
     });
     return this.http.post<ResponseUsuario>(`${this.apiUrl}usuario/listarUsuarios`, request, { headers: reqHeader });
   }
+
+  insertUsuario(request:any): Observable<any> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post<any>(`${this.apiUrl}usuario/insertUsuario`, request, { headers: reqHeader });
+  }
+
+  deleteUsuario(request:any, token: any): Observable<any> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    });
+    return this.http.post<any>(`${this.apiUrl}usuario/deleteUsuario`, request, { headers: reqHeader });
+  }
+
+  updateUsuario(request:any): Observable<any> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post<any>(`${this.apiUrl}usuario/updateUsuario`, request, { headers: reqHeader });
+  }
+
+  login(request:any): Observable<any> {
+    var reqHeader = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post<any>(`${this.apiUrl}seguridad/login`, request, { headers: reqHeader });
+  }
 }

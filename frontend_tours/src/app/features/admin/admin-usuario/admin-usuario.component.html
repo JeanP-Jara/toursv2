@@ -14,11 +14,11 @@
     <table mat-table [dataSource]="tabla" matSort class="mat-elevation-z8">
     
         <ng-container matColumnDef="editar">
-            <th mat-header-cell *matHeaderCellDef> <button matTooltip="insertar"  mat-icon-button (click)="editar(null)">
+            <th mat-header-cell *matHeaderCellDef> <button matTooltip="insertar"  mat-icon-button (click)="editar(null, '500ms', '500ms')">
                 <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
             </button> </th>
             <td mat-cell *matCellDef="let element">
-            <button mat-icon-button matTooltip="editar"  color="primary" (click)="editar(element)">
+            <button mat-icon-button matTooltip="editar"  color="primary" (click)="editar(element, '500ms', '500ms')">
                 <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
             </button>
             </td>
@@ -37,7 +37,7 @@
         <ng-container matColumnDef="eliminar">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Eliminar </th>
         <td mat-cell *matCellDef="let element">
-            <button matTooltip="eliminar"  mat-icon-button color="error" (click)="eliminar(element)">
+            <button matTooltip="eliminar"  mat-icon-button color="error" (click)="eliminar(element, '500ms', '500ms')">
             <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
             </button>
         </td>

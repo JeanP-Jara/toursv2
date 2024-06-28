@@ -3,6 +3,7 @@ import { TourService } from '../../services/tour.service';
 import { ResponseTour, Tour } from '../../models/tour';
 import { ExcursionTour } from '../../models/excursion-tour';
 import { ExcursionTourFactory } from '../../models/abstract-tour-factory';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tour-list',
@@ -18,6 +19,7 @@ export class TourListComponent implements OnInit {
 
   constructor(
     private _tours_service: TourService, 
+    public router: Router,
   ) {
     this.factory = new ExcursionTourFactory(this._tours_service, {n_id_tipo_tour: 1});
     this.factory2 = new ExcursionTourFactory(this._tours_service, {n_id_tipo_tour: 2});
@@ -54,5 +56,11 @@ export class TourListComponent implements OnInit {
         //this.openSnackBar(res.mensaje, 2500); 
       }
     });
+  }
+
+
+  showTour(element: any){
+    console.log("showTour", element);   
+    this.router.navigate(["/toursdetalle/" + element.n_id_tours ]);
   }
 }

@@ -1,0 +1,113 @@
+.fondo_img{
+    height: 450px; 
+    width: 100%; 
+    background-image: url(https://travel1tours.com/wp-content/uploads/2017/09/tour-maras-moray-y-salineras.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+h1{
+    padding-left: 200px;
+    padding-top: 350px;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 0;
+    margin-top: 22px;
+}
+
+.info_container{
+    width: 100%;
+    height: 200px;
+    background-color: #f5f5f5;
+    padding: 55px 0 20px;
+}
+
+.tourmaster{
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tour_item{
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 15px;
+    width: 50%;
+    float: left;
+}
+
+i{
+    color: #4692e7;
+}
+
+.callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+    h4 {
+      margin-top: 0;
+      margin-bottom: 5px;
+    }
+    p:last-child {
+      margin-bottom: 0;
+    }
+    code {
+      border-radius: 3px;
+    }
+    & + .bs-callout {
+      margin-top: -5px;
+    }
+  }
+  /* @each $name,$color in (default,#777),(primary,#428bca),(success,#5cb85c),(danger,#d9534f),(warning,#f0ad4e),(info,#5bc0de), (bdc,#29527a) {
+    .callout-#{$name} {
+      border-left-color: $color;
+      h4 {
+        color: $color;
+      }
+    }
+  } */
+
+hr.solid {
+    border-top: 2px solid #bbb;
+}
+
+.content_detalle{
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 10%;
+    padding-right: 40%;
+}
+
+.fixed-div {
+    position: fixed;
+    top: 300px; 
+    right: 100px; 
+    width: 20%;
+
+}
+
+.titulo_pago{
+    background-color: #2c487a;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    margin: 0;
+}
+
+.subtitulo_pago{
+    background-color: #4675e7;
+    padding: 24px;
+    text-align: center;
+    font-size: 36px;
+    color: white;
+}
+
+.contenido_pago{
+    padding: 10%;
+}
