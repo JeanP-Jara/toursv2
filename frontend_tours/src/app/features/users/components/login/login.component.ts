@@ -19,6 +19,11 @@ export class LoginComponent implements OnInit {
     id_usuario: 0
   };
 
+  valCapcha: boolean = false;
+  spinner: boolean = false;
+
+  
+
   constructor(
     public router: Router, 
     private _usuario_service: UsuarioService,
@@ -28,27 +33,43 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login(e: any){
-    console.log(this.dataLogin);    
-    //[routerLink]="['/usuario']"
-    
-    this._usuario_service.login(this.dataLogin).subscribe((res=>{
-      let dataScnack: SnackInterface = {
-        mensaje: '' ,
-        tipo: 2500
-      }
-      if(res.estado){
-        dataScnack.mensaje = 'Usuario autenticado!';
-        localStorage.setItem('currentUser', JSON.stringify(res)); 
-        this.router.navigate(['/administracion']);
-      }else{
-        dataScnack.mensaje = res.mensaje
-      }      
-      this.snackBar.openFromComponent(SnackComponent, {
-        duration: 2000,
-        data: dataScnack
-      });
-    }));
+  resolved(captchaResponse: string) {
+    //console.log(`Resolved captcha with response: ${captchaResponse}`);
+    if (captchaResponse != null) {
+      this.valCapcha = true;
+    }
   }
 
+  loginAttempts: number = 0;
+
+  login(e: any){
+    this.spinner = true;
+    console.log(this.dataLogin);
+    
+    this.loginAttempts++;
+
+    const delay = Math.min(1000 * Math.pow(2, this.loginAttempts), 3000);
+
+    setTimeout(() => {
+      this._usuario_service.login(this.dataLogin).subscribe((res=>{
+        let dataScnack: SnackInterface = {
+          mensaje: '' ,
+          tipo: 2500
+        }
+        if(res.estado){
+          this.spinner = false;
+          dataScnack.mensaje = 'Usuario autenticado!';
+          localStorage.setItem('currentUser', JSON.stringify(res)); 
+          this.router.navigate(['/administracion']);
+        }else{
+          this.spinner = false;
+          dataScnack.mensaje = res.mensaje
+        }      
+        this.snackBar.openFromComponent(SnackComponent, {
+          duration: 2000,
+          data: dataScnack
+        });
+      }));
+    }, delay);    
+  }
 }

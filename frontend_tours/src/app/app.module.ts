@@ -44,7 +44,9 @@ import { AdminTipoTourComponent } from './features/admin/admin-tipo-tour/admin-t
 import { AdminTipoTourEditarComponent } from './features/admin/admin-tipo-tour-editar/admin-tipo-tour-editar.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { AdminUsuarioEditarComponent } from './features/admin/admin-usuario-editar/admin-usuario-editar.component';
-
+import  {  RecaptchaModule  }  from  "ng-recaptcha" ; 
+import { RecaptchaFormsModule } from 'ng-recaptcha';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -94,7 +96,10 @@ import { AdminUsuarioEditarComponent } from './features/admin/admin-usuario-edit
     MatDialogModule,
     MatSelectModule,
     MatSnackBarModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {provide: APP_BASE_HREF, useValue: '/' },

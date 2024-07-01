@@ -1,4 +1,11 @@
 .container {
     margin-top: 80px;
-    height: 680px;
+    height: 880px;
+}
+
+.contenedor{    
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    align-items: center;
 }
