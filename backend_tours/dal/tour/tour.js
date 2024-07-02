@@ -48,9 +48,10 @@ const getDetalleTour = (request, response) => {
     let recomendaciones = [];    
 
     let cadena1 = `SELECT t.n_id_tours, t.nombre, t.precio, t.c_disponibilidad, t.n_id_departamento, d.c_nombre as departamento, t.n_id_lugar, l.c_nombre as lugar, 
-                        t.n_edad_min, t.n_person_max, t.c_detalle FROM tours t
+                        t.n_edad_min, t.n_person_max, t.c_detalle, f.n_id_foto, f.c_nombre as foto FROM tours t
                     INNER JOIN departamento d on d.n_id_departamento = t.n_id_departamento
                     INNER JOIN lugar l on l.n_id_lugar = t.n_id_lugar
+                    INNER JOIN foto f on f.n_id_foto = t.n_id_foto
                     WHERE t.n_id_tours = ${n_id_tours}`
     conn.query(cadena1, (error, results) => {
         if (error) {

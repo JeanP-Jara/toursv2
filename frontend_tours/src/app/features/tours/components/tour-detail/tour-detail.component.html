@@ -1,154 +1,122 @@
-<div id="inicio" class="fondo_img">
-    <h1>Tour Moray Salineras</h1>
-</div>
-<div class="info_container">
-    <div class="tourmaster">
-        <div class="tour_item">
-            <i class="bi bi-clock"></i>  6 Horas
-        </div>
-        <div class="tour_item">
-            <i class="bi bi-calendar3"></i>  Disponible: Ene - Dic
-        </div>
-        <div class="tour_item">
-            <i class="bi bi-airplane"></i>  Cusco
-        </div>
-        <div class="tour_item">
-            <i class="bi bi-airplane-engines"></i>  Moray
-        </div>
-        <div class="tour_item">
-            <i class="bi bi-person"></i>  Edad mínima: 04+
-        </div>
-        <div class="tour_item">
-            <i class="bi bi-people"></i>  Personas máximas: 16
+<div *ngIf="!cargando">
+    <div id="inicio" class="fondo_img">
+        <h1 style="padding-right: 40%;">{{mTour.nombre}}</h1>
+    </div>
+    <div class="info_container">
+        <div class="tourmaster">
+            <div class="tour_item">
+                <i class="bi bi-clock"></i>  6 Horas
+            </div>
+            <div class="tour_item">
+                <i class="bi bi-calendar3"></i>  Disponible: {{mTour.c_disponibilidad}}
+            </div>
+            <div class="tour_item">
+                <i class="bi bi-airplane"></i>  {{mTour.departamento}}
+            </div>
+            <div class="tour_item">
+                <i class="bi bi-airplane-engines"></i>  {{mTour.lugar}}
+            </div>
+            <div class="tour_item">
+                <i class="bi bi-person"></i>  Edad mínima: {{mTour.n_edad_min}}+
+            </div>
+            <div class="tour_item">
+                <i class="bi bi-people"></i>  Personas máximas: {{mTour.n_person_max}}
+            </div>
         </div>
     </div>
-</div>
-<div>
-    <div class="fixed-div">
-        <div class="card">
-            <h4 class="titulo_pago">Reserva tu experiencia</h4>
-            <p class="subtitulo_pago">Desde: $120 <i class="bi bi-tag" style="color: white;"></i></p>
-            <form class="contenido_pago">               
-                <div class="row mb-3">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label"><i class="bi bi-calendar3"></i></label>
-                    <div class="col-sm-10">
-                        <input type="date" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">                        
-                    </div>
-                </div>  
-                <div class="row mb-3">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label"><i class="bi bi-people"></i></label>
-                    <div class="col-sm-10">
-                    <input type="number" class="form-control" placeholder="Cantidad de personas" aria-label="Username" aria-describedby="addon-wrapping">                    
-                    </div>
-                </div>               
-                
-                <button type="button" class="btn btn-primary">Pagar</button>
-            </form>
-        </div>                
-    </div>
-    <div class="content_detalle">
-        <h2><i class="bi bi-file-text"></i> Detalles del Tour Maras - Moray - Salineras </h2>
-        <p>
-        Recorre, con nuestro tour Maras, Moray y Salineras, los tres importantes centros arqueológicos que, normalmente, no están incluidos en los tours clásicos al Valle Sagrado de los Incas.
-        <br>
-        Inicia tu viaje en la ciudad de Cusco (Perú) y visita:
-        </p>
-        <ul>
-            <li>
-                El centro experimental agrícola inca de Moray. Ubicado a 7 km al oeste del pueblo de Maras y a una altitud de 3500 msnm. Esta zona arqueológica destaca por su sistema de andenes circulares que, en la época inca, sirvieron como un centro de investigación agrícola para la adaptación de las plantas a los diferentes pisos ecológicos.
-            </li>
-            <li>
-                El pueblo tradicional de Maras. Situado a 74 km de la ciudad de Cusco. Es un antiguo pueblo colonial que destaca por sus escudos nobiliarios, de nobles indios de la colonia, que todavía lucen en los dinteles de algunas puertas. Durante la colonia, por encontrarse muy cerca a las Minas de Sal de Salineras, fue un importante enclave político-administrativo.
-            </li>
-            <li>
-                Las minas de sal de Salineras. Conformado por más de 3000 pozos pequeños que están excavados en la escarpada ladera de una quebrada. En estos pozos, siguiendo métodos ancestrales, se almacena y cristaliza el agua salada que emana el manantial de la montaña Qaqawiñay.
-            </li>
-        </ul>
-
-        <div class="callout callout-default">
-            <em>
-            «Nada desarrolla tanto la inteligencia como viajar». Reserva nuestro tour Maras, Moray y Salineras, y deleita tu mirada con las impresionantes vistas que ofrecen: los pintorescos paisajes y nevados del Valle Sagrado, los enigmáticos centros arqueológicos del Valle Sagrado Alternativo y los pueblos tradicionales de la meseta de Chinchero.
-            </em> 
+    <div>
+        <div class="fixed-div">
+            <div class="card">
+                <h4 class="titulo_pago">Reserva tu experiencia</h4>
+                <p class="subtitulo_pago">Desde: ${{mTour.precio}} <i class="bi bi-tag" style="color: white;"></i></p>
+                <form class="contenido_pago">               
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"><i class="bi bi-calendar3"></i></label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">                        
+                        </div>
+                    </div>  
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"><i class="bi bi-people"></i></label>
+                        <div class="col-sm-10">
+                        <input type="number" class="form-control" placeholder="Cantidad de personas" aria-label="Username" aria-describedby="addon-wrapping">                    
+                        </div>
+                    </div>               
+                    
+                    <button type="button" class="btn btn-primary">Pagar</button>
+                </form>
+            </div>                
         </div>
-        <hr class="solid">
-        <h4><strong>Resumen:</strong></h4>
-        <ul>
-            <li>
-                Tipo de Turismo: Cultural y arqueológico.
-            </li>
-            <li>
-                Duración: medio día.
-            </li>
-            <li>
-                Servicio: compartido.
-            </li>
-            <li>
-                Periodo: abril – diciembre (mejor temporada), enero – marzo (con restricciones).
-            </li>
-        </ul>
-        <hr class="solid">
-        <h4><strong>Incluye:</strong></h4>
-        <ul>
-            <li>
-            Tour a Maras, Moray y Salineras, en servicio compartido.
-            </li>
-            <li>
-            Servicio de guiado en el idioma requerido: español o inglés.
-            </li>
-            <li>
-            Asistencia y recojo desde tu hotel, en el centro histórico de la ciudad de Cusco.
-            </li>
-            <li>
-            Transporte turístico durante el tour.
-            </li>
-            <li>
-            Equipo de primeros auxilios.
-            </li>
-        </ul>
-        <hr class="solid">
-        <h4><strong>No incluye:</strong></h4>
-        <ul>
-            <li>
-            Boleto Turístico Cusco ni ticket de ingreso a las Salinas de Maras (Salineras).
-            </li>
-            <li>
-            Bebidas ni snacks.
-            </li>
-            <li>
-            Gastos adicionales por problemas climatológicos.
-            </li>
-        </ul>
-
-        <hr class="solid">
-        <h4><strong>Recomendaciones de Viaje:</strong></h4>
-        <p>Llevar:</p>
-        <ul>
-            <li>
-            Pasaporte // Tarjeta ISIC // DNI, obligatorio.
-            </li>
-            <li>
-            Impermeables para la lluvia entre diciembre a abril.
-            </li>
-            <li>
-            Cámara fotográfica o cámara filmadora con batería extra.
-            </li>
-            <li>
-            Protector solar y sombrero de ala ancha.
-            </li>
-            <li>
-            Dinero extra para gastos personales adicionales y gratitudes.
-            </li>
-        </ul>
-
-        <hr class="solid">
-        <h2><i class="bi bi-map"></i> Mapa </h2>
-        <google-map height="600px"
-            width="950px"
-            [center]="center"
-            [zoom]="zoom"
-            (mapClick)="moveMap($event)"
-            (mapMousemove)="move($event)">
-        </google-map>
-
-    </div> 
+        <div class="content_detalle">
+            <h2><i class="bi bi-file-text"></i> Detalles del {{mTour.nombre}} </h2>
+            <p>
+            {{mTour.c_detalle}}
+            <br>
+            Inicia tu viaje y visita:
+            </p>
+            <ul>
+                <li *ngFor="let e of mTour.actividades">
+                    {{e.c_detalle}}
+                </li>
+            </ul>
+    
+            <div class="callout callout-default">
+                <em>
+                «Nada desarrolla tanto la inteligencia como viajar». Reserva nuestro tour.
+                </em> 
+            </div>
+            <!-- <hr class="solid">
+            <h4><strong>Resumen:</strong></h4>
+            <ul>
+                <li>
+                    Tipo de Turismo: Cultural y arqueológico.
+                </li>
+                <li>
+                    Duración: medio día.
+                </li>
+                <li>
+                    Servicio: compartido.
+                </li>
+                <li>
+                    Periodo: abril – diciembre (mejor temporada), enero – marzo (con restricciones).
+                </li>
+            </ul> -->
+            <hr class="solid">
+            <h4><strong>Incluye:</strong></h4>
+            <ul>
+                <li *ngFor="let e of mTour.contenido">
+                    {{e.c_detalle}}
+                </li>
+            </ul>
+            <hr class="solid">
+            <h4><strong>No incluye:</strong></h4>
+            <ul>
+                <li *ngFor="let e of mTour.no_contenido">
+                    {{e.c_detalle}}
+                </li>
+            </ul>
+    
+            <hr class="solid">
+            <h4><strong>Recomendaciones de Viaje:</strong></h4>
+            <p>Llevar:</p>
+            <ul>
+                <li *ngFor="let e of mTour.recomendaciones">
+                    {{e.c_detalle}}
+                </li>
+            </ul>
+    
+            <hr class="solid">
+            <h2><i class="bi bi-map"></i> Mapa </h2>
+            <google-map height="600px"
+                width="950px"
+                [center]="center"
+                [zoom]="zoom"
+                (mapClick)="moveMap($event)"
+                (mapMousemove)="move($event)">
+            </google-map>
+    
+        </div> 
+    </div>
 </div>
+<!-- <ngx-spinner type="pacman"></ngx-spinner> -->
+<ngx-spinner type="pacman" size = "large" color = "#fff" bdColor = "rgba(0, 0, 0, 0.8)"><p style="color: white" > Cargando... </p></ngx-spinner>

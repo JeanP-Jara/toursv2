@@ -1,3 +1,9 @@
+export interface Actividad {
+  n_id_actividad: number,
+  n_id_tours: number,
+  c_detalle: string
+}
+
 export interface IPrototypeActividad {
     n_id_actividad: number,
     n_id_tours: number,
@@ -41,4 +47,4 @@ export class PrototypeActividadFactory {
       const prototype = this.prototypes[key];
       return prototype.clone();
     }
-  }
+}

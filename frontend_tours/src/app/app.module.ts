@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_BASE_HREF } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
@@ -47,7 +47,7 @@ import { AdminUsuarioEditarComponent } from './features/admin/admin-usuario-edit
 import  {  RecaptchaModule  }  from  "ng-recaptcha" ; 
 import { RecaptchaFormsModule } from 'ng-recaptcha';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -99,8 +99,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     GoogleMapsModule,
     RecaptchaModule,
     RecaptchaFormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NgxSpinnerModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     {provide: APP_BASE_HREF, useValue: '/' },
   ],

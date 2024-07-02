@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TourService } from '../../services/tour.service';
 import { ActivatedRoute } from '@angular/router';
+import { TourDetalle } from '../../models/tour-detalle';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-tour-detail',
@@ -16,6 +18,11 @@ export class TourDetailComponent implements OnInit {
   };
   zoom = 12;
   idTours: any;
+  mTour!: TourDetalle;
+
+  cargando: boolean = true;
+
+  loginAttempts: number = 0;
 
   moveMap(event: google.maps.MapMouseEvent) {
     if (event.latLng != null) this.center = (event.latLng.toJSON());
@@ -27,20 +34,30 @@ export class TourDetailComponent implements OnInit {
   constructor(
     private _tours_service: TourService, 
     private _Activatedroute: ActivatedRoute,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
     this.idTours = this._Activatedroute.snapshot.paramMap.get("n_id_tours");
-    this.getDetalleTour();
+    this.spinner.show();
+
+    this.loginAttempts++;
+    const delay = Math.min(1000 * Math.pow(2, this.loginAttempts), 3000);
+    setTimeout(() => {
+      this.getDetalleTour();
+    }, delay); 
   }
 
-  getDetalleTour(){
+  getDetalleTour(){    
     let req = {
       "n_id_tours": this.idTours
     }
     this._tours_service.getDetalleTour(req).subscribe((res=>{
       if(res.estado){
-        console.log(res.data);        
+        this.mTour = res.data;
+        this.spinner.hide();
+        this.cargando = false;
+        console.log("getDetalleTour", this.mTour);        
       }else{
         //this.openSnackBar(res.mensaje, 2500);
         console.log("OCURRIO UN ERROR");

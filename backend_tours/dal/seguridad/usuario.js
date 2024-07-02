@@ -21,7 +21,7 @@ const login = (request, response) => {
                 }
                 var token = jwt.sign(tokenData, 'Secret Password', {
                     expiresIn: 60 * 60 * 4 // 4 horas
-                })
+                    })
                 response.status(200).json({ estado: true, mensaje: "", data: results[0], token: token})
             } else {
                 response.status(200).json({ estado: false, mensaje: "DB:usuario o contraseña inválidos!.", data: null })
