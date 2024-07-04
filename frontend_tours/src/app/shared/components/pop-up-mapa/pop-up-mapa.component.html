@@ -1,0 +1,22 @@
+<div class="contenedorBody">
+    <div>
+        <google-map height="65vh" width="100%" [center]="center" [zoom]="zoom" (mapClick)="addMarker($event)">
+            <map-marker *ngIf="markerPosition.lat != 0"
+                    [position]="markerPosition"
+                    [options]="markerOptions">
+            </map-marker>
+        </google-map>
+    </div>
+    <div class="actions">
+        <button button mat-stroked-button color="primary" type="button" (click)="guardar()"
+            [disabled]="markerPosition.lat == 0">
+            <mat-icon>check</mat-icon>
+            <span style="margin-left: 4px;">Aceptar</span>
+        </button>
+        <button button mat-stroked-button color="error" type="button" style="margin-left: 8px;" (click)="cerrar()">
+            <mat-icon>close</mat-icon>
+            <span style="margin-left: 4px;">Cancelar</span>
+        </button>
+    </div>
+</div>
+    

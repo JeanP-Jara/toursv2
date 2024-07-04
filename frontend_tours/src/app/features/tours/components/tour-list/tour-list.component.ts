@@ -4,6 +4,7 @@ import { ResponseTour, Tour } from '../../models/tour';
 import { ExcursionTour } from '../../models/excursion-tour';
 import { ExcursionTourFactory } from '../../models/abstract-tour-factory';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-tour-list',
@@ -36,7 +37,7 @@ export class TourListComponent implements OnInit {
         console.log("datos: ", res.data);   
         this.listTours = res.data;     
         this.listTours.forEach(e => {
-          e.c_nombre = `../../../assets/${e.c_nombre}`;
+          e.c_nombre = `${environment.urlArchivo}${e.c_ruta1}`;
         });
       }else{
         //this.openSnackBar(res.mensaje, 2500); 
@@ -50,14 +51,13 @@ export class TourListComponent implements OnInit {
         console.log("datos: ", res.data);   
         this.listTours2 = res.data;     
         this.listTours2.forEach(e => {
-          e.c_nombre = `../../../assets/${e.c_nombre}`;
+          e.c_nombre = `${environment.urlArchivo}${e.c_ruta1}`;
         });
       }else{
         //this.openSnackBar(res.mensaje, 2500); 
       }
     });
   }
-
 
   showTour(element: any){
     console.log("showTour", element);   

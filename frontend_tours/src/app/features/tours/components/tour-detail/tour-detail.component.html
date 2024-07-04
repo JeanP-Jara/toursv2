@@ -1,5 +1,5 @@
 <div *ngIf="!cargando">
-    <div id="inicio" class="fondo_img">
+    <div id="inicio" class="fondo_img" [ngStyle]="{'background-image': 'url(' + rutaBase + mTour.c_ruta2 + ')'}">
         <h1 style="padding-right: 40%;">{{mTour.nombre}}</h1>
     </div>
     <div class="info_container">
@@ -113,6 +113,10 @@
                 [zoom]="zoom"
                 (mapClick)="moveMap($event)"
                 (mapMousemove)="move($event)">
+                <map-marker *ngIf="markerPosition.lat != 0"
+                    [position]="markerPosition"
+                    [options]="markerOptions">
+            </map-marker>
             </google-map>
     
         </div> 

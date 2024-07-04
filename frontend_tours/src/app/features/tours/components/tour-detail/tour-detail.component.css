@@ -1,7 +1,7 @@
 .fondo_img{
     height: 450px; 
     width: 100%; 
-    background-image: url(https://travel1tours.com/wp-content/uploads/2017/09/tour-maras-moray-y-salineras.jpg);
+    /* background-image: url(https://travel1tours.com/wp-content/uploads/2017/09/tour-maras-moray-y-salineras.jpg); */
     /*background-image: url('../../../../../assets\tour-maras-moray-y-salineras-150x150.jpg');*/
     background-size: cover;
     background-position: center;
@@ -16,6 +16,11 @@ h1{
     font-weight: 700;
     margin-bottom: 0;
     margin-top: 22px;
+    text-shadow: 
+    1px 1px 0 #000, 
+    -1px -1px 0 #000, 
+    -1px 1px 0 #000, 
+    1px -1px 0 #000;
 }
 
 .info_container{

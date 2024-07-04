@@ -16,14 +16,22 @@ app.use(
   })
 );
 
+const ruta = '/archivos';
+
+app.use('/archivos', express.static(__dirname + ruta));
+
 /****IMPORTACIONES DAL****/
 const dbSeguridad = require('./dal/seguridad/usuario');//SEGURIDAD
-const dbTour = require('./dal/tour/tour');//TOURS
+const dbTour = require('./dal/tour/tour');//TOURSc
 const dbUsuario = require('./dal/usuario/usuario');//USUARIO
 const dbActividad = require('./dal/actividad/actividad');//ACTIVIDAD
 const dbDepartamento = require('./dal/departamento/departamento');//DEPARTAMENTO
 const dbLugar = require('./dal/lugar/lugar');//LUGAR
 const dbTipoTour = require('./dal/tour/tipoTour');//TIPO_TOURS
+const dbContenido = require('./dal/contenido/contenido');
+const dbNoContenido = require('./dal/no_contenido/no_contenido');
+const dbRecomedacion = require('./dal/recomendacion/recomendacion');
+
 
 /****RUTAS****/
 app.get('/', (request, response) => {
@@ -37,6 +45,10 @@ app.post('/api/seguridad/login', dbSeguridad.login);
 app.post('/api/tours/tour', dbTour.getTours);
 app.post('/api/tours/getToursAll', dbTour.getToursAll);
 app.post('/api/tours/getDetalleTour', dbTour.getDetalleTour);
+app.post('/api/tours/guardarFoto', dbTour.guardarFoto);
+app.post('/api/tours/actualizar', dbTour.actualizar);
+app.post('/api/tours/agregar', dbTour.agregar);
+app.post('/api/tours/eliminar', dbTour.eliminar);
 
 
 /****USUARIO****/
@@ -50,6 +62,25 @@ app.post('/api/actividad/getActividadAll', dbActividad.getActividadAll);
 app.post('/api/actividad/actualizarActividad', dbActividad.actualizarActividad);
 app.post('/api/actividad/agregarActividad', dbActividad.agregarActividad);
 app.post('/api/actividad/eliminarActividad', dbActividad.eliminarActividad);
+
+/****CONTENIDO****/
+app.post('/api/contenido/getAll', dbContenido.getAll);
+app.post('/api/contenido/actualizar', dbContenido.actualizar);
+app.post('/api/contenido/agregar', dbContenido.agregar);
+app.post('/api/contenido/eliminar', dbContenido.eliminar);
+
+/****NO_CONTENIDO****/
+app.post('/api/no_contenido/getAll', dbNoContenido.getAll);
+app.post('/api/no_contenido/actualizar', dbNoContenido.actualizar);
+app.post('/api/no_contenido/agregar', dbNoContenido.agregar);
+app.post('/api/no_contenido/eliminar', dbNoContenido.eliminar);
+
+/****RECOMENDACION****/
+app.post('/api/recomendacion/getAll', dbRecomedacion.getAll);
+app.post('/api/recomendacion/actualizar', dbRecomedacion.actualizar);
+app.post('/api/recomendacion/agregar', dbRecomedacion.agregar);
+app.post('/api/recomendacion/eliminar', dbRecomedacion.eliminar);
+
 
 /****DEPARTAMENTO****/
 app.post('/api/departamento/listar', dbDepartamento.listar);
@@ -68,7 +99,6 @@ app.post('/api/tipo_tours/listar', dbTipoTour.listar);
 app.post('/api/tipo_tours/actualizar', dbTipoTour.actualizar);
 app.post('/api/tipo_tours/agregar', dbTipoTour.agregar);
 app.post('/api/tipo_tours/eliminar', dbTipoTour.eliminar);
-
 
 server.listen(port, () => {
     console.log('\n')
