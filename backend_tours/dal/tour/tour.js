@@ -213,7 +213,7 @@ const agregar = (request, response) => {
     }    
 }
 
-const eliminar = (request, response) => {
+const eliminar = (request, response)  => {
 
     var obj = valida.validaToken(request);
 
@@ -222,16 +222,20 @@ const eliminar = (request, response) => {
 
         let n_id_tours = request.body.n_id_tours;
 
-        let cadena = `DELETE FROM tours WHERE n_id_tours = ${n_id_tours}`;
-
-        conn.query(cadena, (error, results) => {
-            if (error) {
-                console.log(error.message);
-                response.status(200).json({ estado: false, mensaje: "error", data: null })
-            } else {
-                response.status(200).json({ estado: true, mensaje: "", data: results})
-            }
-        });
+        try {
+            conn.beginTransaction();        
+            conn.query('DELETE FROM actividad WHERE n_id_tours = ?', [n_id_tours]);
+            conn.query('DELETE FROM contenido WHERE n_id_tours = ?', [n_id_tours]);
+            conn.query('DELETE FROM no_contenido WHERE n_id_tours = ?', [n_id_tours]);
+            conn.query('DELETE FROM recomendacion WHERE n_id_tours = ?', [n_id_tours]);
+            conn.query('DELETE FROM tours WHERE n_id_tours = ?', [n_id_tours]);        
+            conn.commit();
+            response.status(200).json({ estado: true, mensaje: "", data: null});
+        } catch (error) {
+            conn.rollback();
+            console.log(error);
+            response.status(200).json({ estado: false, mensaje: "error", data: null })
+        }
     }else{
         response.status(200).json(obj)
     }

@@ -31,6 +31,7 @@ const dbTipoTour = require('./dal/tour/tipoTour');//TIPO_TOURS
 const dbContenido = require('./dal/contenido/contenido');
 const dbNoContenido = require('./dal/no_contenido/no_contenido');
 const dbRecomedacion = require('./dal/recomendacion/recomendacion');
+const dbDashboard = require('./dal/dashboard/dashboard');
 
 
 /****RUTAS****/
@@ -99,6 +100,9 @@ app.post('/api/tipo_tours/listar', dbTipoTour.listar);
 app.post('/api/tipo_tours/actualizar', dbTipoTour.actualizar);
 app.post('/api/tipo_tours/agregar', dbTipoTour.agregar);
 app.post('/api/tipo_tours/eliminar', dbTipoTour.eliminar);
+
+/****DASHBOARD****/
+app.post('/api/dashboard/getDataDashboard', dbDashboard.getDataDashboard);
 
 server.listen(port, () => {
     console.log('\n')

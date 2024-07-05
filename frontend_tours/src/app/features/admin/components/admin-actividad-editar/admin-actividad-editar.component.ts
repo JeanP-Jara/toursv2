@@ -110,5 +110,4 @@ export class AdminActividadEditarComponent implements OnInit {
       this.dialogRef.close({ flag: true, data: this.actividad });
     }));
   }
-
 }

@@ -7,13 +7,17 @@ import { MatDialog } from '@angular/material/dialog';
 import { TourBuilder } from '../../../tours/models/tours-builder';
 import { Tour } from '../../../tours/models/tour';
 import { AdminToursEditarComponent } from '../admin-tours-editar/admin-tours-editar.component';
+import { ExportarTablasService } from '../../services/exportar-tablas.service';
+import { HeaderComponent } from 'src/app/shared/components/header/header.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ConfirmComponent } from 'src/app/shared/components/confirm/confirm.component';
 
 @Component({
   selector: 'app-admin-tours',
   templateUrl: './admin-tours.component.html',
   styleUrls: ['./admin-tours.component.css']
 })
-export class AdminToursComponent implements OnInit {
+export class AdminToursComponent extends HeaderComponent implements OnInit {
 
   displayedColumns: string[] = ['editar','nombre', 'precio', 'departamento','lugar','c_disponibilidad','n_edad_min','n_person_max','c_desripcion','eliminar'];
   public tabla!: MatTableDataSource<any>;
@@ -26,9 +30,13 @@ export class AdminToursComponent implements OnInit {
   constructor(
     private _tours_service: TourService, 
     public dialog: MatDialog,
-  ) { }
+    public exportarTablasService: ExportarTablasService,
+    public override snackBar: MatSnackBar,
+  ) {
+    super(snackBar);
+   }
 
-  ngOnInit(): void {
+  override ngOnInit(): void {
     this.listarTours();
   }
 
@@ -54,7 +62,7 @@ export class AdminToursComponent implements OnInit {
 
   exportarExcelTabla(){
     try{
-      //this.exportarTablasService.exportarDosificacion(this.tablaDosificacion.data);
+      this.exportarTablasService.exportarExcelTour(this.tabla.data);
     }catch(error){
       console.log("error: ", error);
     }
@@ -110,16 +118,29 @@ export class AdminToursComponent implements OnInit {
     });
   }
 
-  eliminar(dato:any){
-    /* const dialogRef = this.dialog.open(ConfirmComponent, {
+  eliminar(dato:any, enterAnimationDuration: string, exitAnimationDuration: string){
+    const dialogRef = this.dialog.open(ConfirmComponent, {
       width: '500px',
-      data: { titulo: "¿Desea eliminar la dosificacion con código " + dato.c_codigo + "?" }
+      data: { titulo: "¿Desea eliminar el tour?" },
+      enterAnimationDuration, 
+      exitAnimationDuration
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.eliminarDosificacion(dato);
+        this.eliminarDato(dato);
       }
-    }); */
+    });
+  }
+
+  eliminarDato(dato:any){    
+    this._tours_service.eliminar(dato, this.getToken().token).subscribe((res=>{
+      if(res.estado){
+        this.openSnackBar('Se elimino el registro', 99);      
+      }else{
+        this.openSnackBar(res.mensaje, 2000);  
+      }
+      this.listarTours();
+    }));
   }
 
 }

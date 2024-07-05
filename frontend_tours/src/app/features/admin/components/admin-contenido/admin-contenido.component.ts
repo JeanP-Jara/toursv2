@@ -61,7 +61,7 @@ export class AdminContenidoComponent extends HeaderComponent implements OnInit {
 
   exportarExcelTabla(){
     try{
-      this.exportarTablasService.exportarExcelActividad(this.tabla.data);
+      this.exportarTablasService.exportarExcelContenido(this.tabla.data);
     }catch(error){
       console.log("error: ", error);
     }
@@ -72,7 +72,7 @@ export class AdminContenidoComponent extends HeaderComponent implements OnInit {
   editar(element: any, enterAnimationDuration: string, exitAnimationDuration: string){    
     const dialogRef = this.dialog.open(AdminContenidoEditarComponent, {
       width: '750px',      
-      data: { actividad: element },
+      data: { contenido: element },
       enterAnimationDuration,
       exitAnimationDuration,
     });

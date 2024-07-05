@@ -60,7 +60,7 @@ export class AdminRecomendacionComponent extends HeaderComponent implements OnIn
 
   exportarExcelTabla(){
     try{
-      this.exportarTablasService.exportarExcelActividad(this.tabla.data);
+      this.exportarTablasService.exportarExcelRecomendacion(this.tabla.data);
     }catch(error){
       console.log("error: ", error);
     }
@@ -71,7 +71,7 @@ export class AdminRecomendacionComponent extends HeaderComponent implements OnIn
   editar(element: any, enterAnimationDuration: string, exitAnimationDuration: string){    
     const dialogRef = this.dialog.open(AdminRecomendacionEditarComponent, {
       width: '750px',      
-      data: { actividad: element },
+      data: { recomendacion: element },
       enterAnimationDuration,
       exitAnimationDuration,
     });
