@@ -1,4 +1,39 @@
-.chart-container{    
-    width: 80%; 
-    height: 400px;
+.chart-container{ 
+    margin-top: 20px;
+    height: 700px;
+    width: 700px;
 }
+
+.contenedor{    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap:wrap;
+}
+
+.contCard{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.chart-container-bar{ 
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.icon-display {
+    margin-left: 24px;
+    transform: scale(2);
+}
+
+.contenedor2{    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap:wrap;
+}
+
