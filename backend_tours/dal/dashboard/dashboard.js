@@ -8,6 +8,7 @@ const getDataDashboard = (request, response) => {
     let cantTipoTourMes = [];
     let cantTourMes = [];
     let cantTour = [];
+    let ventas = [];
 
     //CANTIDAD POR TIPO TOUR
     let cadena1 = `
@@ -67,13 +68,27 @@ const getDataDashboard = (request, response) => {
                                     if (results4.length > 0) {
                                         cantTour = results4;
                                     }
-                                    data = {
-                                        cantTour: cantTour,
-                                        cantTourMes: cantTourMes,
-                                        cantTipoTourMes: cantTipoTourMes,
-                                        cantTipoTour: cantTipoTour
-                                    }
-                                    response.status(200).json({ estado: true, mensaje: "", data: data})
+                                    let cadena5 = `
+                                        SELECT SUM(n_cant_personas) as personas, SUM(n_cant_personas*n_precio) as ingresos FROM ventatour;
+                                    `;
+                                    conn.query(cadena5, (error, results5) => {
+                                        if (error) {
+                                            console.log(error.message);
+                                            response.status(200).json({ estado: false, mensaje: "error", data: null })
+                                        } else {
+                                            if (results5.length > 0) {
+                                                ventas = results5;
+                                            }
+                                            data = {
+                                                cantTour: cantTour,
+                                                cantTourMes: cantTourMes,
+                                                cantTipoTourMes: cantTipoTourMes,
+                                                cantTipoTour: cantTipoTour,
+                                                ventas: ventas
+                                            }
+                                            response.status(200).json({ estado: true, mensaje: "", data: data})
+                                        }
+                                    });
                                 }
                             });
                         }

@@ -32,6 +32,7 @@ const dbContenido = require('./dal/contenido/contenido');
 const dbNoContenido = require('./dal/no_contenido/no_contenido');
 const dbRecomedacion = require('./dal/recomendacion/recomendacion');
 const dbDashboard = require('./dal/dashboard/dashboard');
+const dbVentasTour = require('./dal/ventas/ventas');
 
 
 /****RUTAS****/
@@ -103,6 +104,9 @@ app.post('/api/tipo_tours/eliminar', dbTipoTour.eliminar);
 
 /****DASHBOARD****/
 app.post('/api/dashboard/getDataDashboard', dbDashboard.getDataDashboard);
+
+/****VENTAS****/
+app.post('/api/ventastour/registrarVenta', dbVentasTour.registrarVenta);
 
 server.listen(port, () => {
     console.log('\n')

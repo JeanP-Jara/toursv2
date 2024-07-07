@@ -37,17 +37,15 @@
         <h2>Paquetes turísticos</h2>
         <br>
         <p>Explora el patrimonio histórico - cultural de Perú y disfruta de momentos únicos e inolvidables</p>
-        <div style="display: flex;
-                    flex-direction: row;
-                    justify-content: space-around;
-                    flex-wrap:wrap;">
+        <br>
+        <div class="content-cards-tours">
             <div *ngFor="let e of listTours" >
-                <div class="card" style="width: 12rem;">
+                <div class="card" style="width: 12rem;" >
                     <img [src]="e.c_nombre" class="card-img-top" alt="" width="150" height="150">
                     <div class="card-body">
                         <h4 class="card-title"> {{e.nombre}} </h4>                        
                         <a  class="btn btn-primary" (click)="showTour(e)">
-                            Desde {{e.precio}}
+                            Desde ${{e.precio}}
                         </a>
                     </div>
                 </div>
@@ -58,17 +56,15 @@
         <h2>Excursiones de Trekking & Hiking</h2>
         <br>
         <p>Recorre a pie las rutas de senderismo más impresionantes de América y del Mundo</p>
-        <div style="display: flex;
-                    flex-direction: row;
-                    justify-content: space-around;
-                    flex-wrap:wrap;">
+        <br>
+        <div class="content-cards-tours">
             <div *ngFor="let e of listTours2" >
                 <div class="card" style="width: 12rem;">
                     <img [src]="e.c_nombre" class="card-img-top" alt="" width="150" height="150">
                     <div class="card-body">
                         <h4 class="card-title"> {{e.nombre}} </h4>                        
-                        <a  class="btn btn-primary">
-                            Desde {{e.precio}}
+                        <a  class="btn btn-primary" (click)="showTour(e)">
+                            Desde ${{e.precio}}
                         </a>
                     </div>
                 </div>

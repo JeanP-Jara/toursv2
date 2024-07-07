@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { ChartConfiguration } from 'chart.js';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChartConfiguration, registerables } from 'chart.js';
 import { DashboardService } from '../../services/dashboard.service';
 import { HeaderComponent } from 'src/app/shared/components/header/header.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TipoToursService } from '../../services/tipo-tours.service';
+import { TourService } from 'src/app/features/tours/services/tour.service';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -11,11 +15,10 @@ import { TipoToursService } from '../../services/tipo-tours.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent extends HeaderComponent implements OnInit {
-  cards = [
-    { title: 'Personas', icon: 'group_add', count: 1234, color: 'primary' },
-    { title: 'Ganancias', icon: 'attach_money', count: 5678, color: 'success' },
-    // Añade más tarjetas según sea necesario
-  ];
+  @ViewChild('cards', { static: false }) cards!: ElementRef;
+  @ViewChild('pieChart1', { static: false }) pieChart1!: ElementRef;
+  @ViewChild('pieChart2', { static: false }) pieChart2!: ElementRef;
+  @ViewChild('barChart', { static: false }) barChart!: ElementRef;
 
   listTipotours = [];
 
@@ -76,9 +79,14 @@ export class DashboardComponent extends HeaderComponent implements OnInit {
     ]
   };
 
+  cantidadPersonas: number = 0;
+  cantidadIngresos: number = 0;
+  cintidadTours: number = 0;
+
   constructor(
     private _servive: DashboardService,
     private _tipoTour_service: TipoToursService,
+    private _tours_service: TourService,
     public override snackBar: MatSnackBar
   ) { 
     super(snackBar)
@@ -86,14 +94,29 @@ export class DashboardComponent extends HeaderComponent implements OnInit {
 
   override ngOnInit(): void {
     this.listarDatosTipoTour();
+    this.listarTours();
     this.getDatos();
   }
+
+  
 
   listarDatosTipoTour(){
     this._tipoTour_service.listar({}).subscribe((res=>{
       if(res.estado){
         console.log(res.data);
         this.listTipotours = res.data;   
+      }else{
+        //this.openSnackBar(res.mensaje, 2500);
+        console.log("OCURRIO UN ERROR");
+      }      
+    }));
+  }
+
+  listarTours(){
+    this._tours_service.getToursAll({}).subscribe((res=>{
+      if(res.estado){
+        console.log(res.data);        
+        this.cintidadTours = res.data.length;
       }else{
         //this.openSnackBar(res.mensaje, 2500);
         console.log("OCURRIO UN ERROR");
@@ -150,21 +173,61 @@ export class DashboardComponent extends HeaderComponent implements OnInit {
           console.log("tipoTour", tipoTour);          
         });
 
-        
-        
-        /* enero.forEach((element: any) => {
-          datasets.push(
-            { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' }
-          )
-        }); */
         this.barChartDataBar = {
           labels: this.barChartLabels,
           datasets: datasets
         };
 
+
+        this.cantidadPersonas = res.data.ventas[0].personas;
+        this.cantidadIngresos = res.data.ventas[0].ingresos;
+
       }else{
         this.openSnackBar(res.mensaje, 2500);
       }      
     });
+  }
+
+  exportPdf() {
+    let pieChart1 = this.pieChart1.nativeElement;
+    let pieChart2 = this.pieChart2.nativeElement;
+    let barChart = this.barChart.nativeElement;
+    let cards = this.cards.nativeElement;
+
+    const pdf = new jsPDF('p', 'mm', 'a4');
+
+    html2canvas(cards, { backgroundColor: null }).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const imgWidth = 210;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      pdf.addImage(imgData, 'PNG', 0, 10, imgWidth, imgHeight);
+
+      html2canvas(pieChart1, { backgroundColor: null }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const imgWidth = 120;
+        const imgHeight = canvas.height * imgWidth / canvas.width;
+        pdf.addImage(imgData, 'PNG', 40, 40, imgWidth, imgHeight);
+
+        html2canvas(pieChart2, { backgroundColor: null }).then(canvas => {
+          const imgData = canvas.toDataURL('image/png');
+          const imgWidth = 120;
+          const imgHeight = canvas.height * imgWidth / canvas.width;
+          pdf.addImage(imgData, 'PNG', 40, imgHeight + 30, imgWidth, imgHeight);
+          pdf.addPage('a4', 'landscape');
+
+
+          html2canvas(barChart, { backgroundColor: null }).then(canvas => {
+            const imgData = canvas.toDataURL('image/png');
+            const imgWidth = 280;
+            const imgHeight = canvas.height * imgWidth / canvas.width;
+            pdf.addImage(imgData, 'PNG', 10, 30, imgWidth, imgHeight);
+
+            pdf.save('dashboard.pdf');
+          });
+        });
+      });
+    });
+    
+    
   }
 }

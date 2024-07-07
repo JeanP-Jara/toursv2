@@ -1,35 +1,30 @@
-<div>
-    
-    <div class="contenedor">
-        <h1>Dashboard</h1>
-        <button id="exportPdf" class="btn btn-success">Exportar a PDF</button>
-    </div>
+<div>    
+    <h1>Dashboard <button id="exportPdf" class="btn btn-success" (click)="exportPdf()">Exportar a PDF</button></h1>
     <br>
     <mat-divider></mat-divider>
 
-    <div style="padding-left: 3%; padding-right: 3%;">
-        <div class="contenedor2" style="padding-top: 16px;">
+    <div style="padding-left: 1%; padding-right: 1%;">
+        <div class="contenedor2" style="padding-top: 16px;" #cards>
             <div class="card text-white" style="width: 300px; background-color: #ffb848;">
                 <div class="card-body d-flex align-items-center">
                 <div class="me-5">
                     <mat-icon class="icon-display">group_add</mat-icon>
                 </div>                    
                 <div>                        
-                    <h5 class="card-title">Personas</h5>
-                    <h2>1234+</h2>
+                    <h5 class="card-title">Viajeros</h5>
+                    <h2>{{cantidadPersonas}}+</h2>
                 </div>
                 </div>
-            </div>
-        
+            </div>        
             
             <div class="card text-white" style="width: 300px; background-color: #10a062;">
                 <div class="card-body d-flex align-items-center">
                 <div class="me-5">
-                    <mat-icon class="icon-display">group_add</mat-icon>
+                    <mat-icon class="icon-display">attach_money</mat-icon>
                 </div>                    
                 <div>                        
-                    <h5 class="card-title">Personas</h5>
-                    <h2>1234+</h2>
+                    <h5 class="card-title">Ingresos</h5>
+                    <h2>{{cantidadIngresos}}+</h2>
                 </div>
                 </div> 
             </div>
@@ -37,67 +32,60 @@
             <div class="card text-white" style="width: 300px; background-color: #852b99;">
                 <div class="card-body d-flex align-items-center">
                 <div class="me-5">
-                    <mat-icon class="icon-display">group_add</mat-icon>
+                    <mat-icon class="icon-display">flight_takeoff</mat-icon>
                 </div>                    
                 <div>                        
-                    <h5 class="card-title">Personas</h5>
-                    <h2>1234+</h2>
+                    <h5 class="card-title">Tours</h5>
+                    <h2>{{cintidadTours}}+</h2>
                 </div>
                 </div>
-            </div>
-        
-            
-            <div class="card text-white" style="width: 300px; background-color: #27a9e3;">
-                <div class="card-body d-flex align-items-center">
-                <div class="me-5">
-                    <mat-icon class="icon-display">group_add</mat-icon>
-                </div>                    
-                <div>                        
-                    <h5 class="card-title">Personas</h5>
-                    <h2>1234+</h2>
-                </div>
-                </div> 
             </div>
         </div>
-        
     
         <div class="contenedor">
+            
             <mat-card class="chart-container">
-                <div class="contCard">
-                    <h3>CANTIDAD DE LINEAS POR ZONA</h3>
+                <div #pieChart1>
+                    <div class="contCard">
+                        <h3>CANTIDAD DE PAQUETES BENDIDOS POR TOUR</h3>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <canvas baseChart 
+                        [data]="pieChartData"
+                        [type]="pieChartType"
+                        [options]="pieChartOptions">
+                    </canvas>
                 </div>
-                
-                <canvas baseChart
-                    [data]="pieChartData"
-                    [type]="pieChartType"
-                    [options]="pieChartOptions">
-                </canvas>
             </mat-card>
-    
-            <mat-card class="chart-container">
-                <div class="contCard">
-                    <h3>CANTIDAD DE LINEAS POR ZONA</h3>
+
+            <mat-card class="chart-container" >
+                <div #pieChart2>
+                    <div class="contCard">
+                        <h3>CANTIDAD DE PAQUETES BENDIDOS POR TIPO DE TOUR</h3>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <canvas baseChart
+                        [data]="pieChartData2"
+                        [type]="pieChartType"
+                        [options]="pieChartOptions">
+                    </canvas>
                 </div>
-                
-                <canvas baseChart
-                    [data]="pieChartData2"
-                    [type]="pieChartType"
-                    [options]="pieChartOptions">
-                </canvas>
             </mat-card>
-    
-            <mat-card class="chart-container-bar">
-                <div class="contCard">
-                    <h3>CANTIDAD DE LINEAS POR ZONA</h3>
+
+            <mat-card class="chart-container-bar" >
+                <div #barChart>
+                    <div class="contCard">
+                        <h3>CANTIDAD DE PAQUETES BENDIDOS POR TIPO DE TOUR Y MES</h3>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <canvas baseChart
+                            [data]="barChartDataBar"
+                            [type]="barChartTypeBar"
+                            [options]="barChartOptionsBar">
+                    </canvas>
                 </div>
-                
-                <canvas baseChart
-                        [data]="barChartDataBar"
-                        [type]="barChartTypeBar"
-                        [options]="barChartOptionsBar">
-                </canvas>
             </mat-card>
-    
+
         </div>
     </div>
 </div>

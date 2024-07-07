@@ -5,13 +5,15 @@ import { ExcursionTour } from '../../models/excursion-tour';
 import { ExcursionTourFactory } from '../../models/abstract-tour-factory';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { HeaderComponent } from 'src/app/shared/components/header/header.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-tour-list',
   templateUrl: './tour-list.component.html',
   styleUrls: ['./tour-list.component.css'],
 })
-export class TourListComponent implements OnInit {
+export class TourListComponent extends HeaderComponent implements OnInit {
 
   listTours: Tour[] = [];
   listTours2: Tour[] = [];
@@ -21,26 +23,27 @@ export class TourListComponent implements OnInit {
   constructor(
     private _tours_service: TourService, 
     public router: Router,
+    public override snackBar: MatSnackBar,
   ) {
+    super(snackBar);
     this.factory = new ExcursionTourFactory(this._tours_service, {n_id_tipo_tour: 1});
-    this.factory2 = new ExcursionTourFactory(this._tours_service, {n_id_tipo_tour: 2});
+    this.factory2 = new ExcursionTourFactory(this._tours_service, {n_id_tipo_tour: 2});    
   }
 
-  ngOnInit(): void {
+  override ngOnInit(): void {
     this.getExcursionTour();
     this.getPaqueteTour();
   }
 
   getExcursionTour(){
     this.factory.getExcursionTour().subscribe(res => {
-      if(res.estado){
-        console.log("datos: ", res.data);   
+      if(res.estado){  
         this.listTours = res.data;     
         this.listTours.forEach(e => {
           e.c_nombre = `${environment.urlArchivo}${e.c_ruta1}`;
         });
       }else{
-        //this.openSnackBar(res.mensaje, 2500); 
+        this.openSnackBar(res.mensaje, 2500); 
       }
     });
   }

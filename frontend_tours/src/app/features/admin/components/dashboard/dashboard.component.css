@@ -1,13 +1,13 @@
 .chart-container{ 
     margin-top: 20px;
-    height: 700px;
-    width: 700px;
+    height: 600px;
+    width: 600px;
 }
 
 .contenedor{    
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap:wrap;
 }
 
@@ -17,6 +17,10 @@
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
+}
+
+h3{
+    text-align: center;
 }
 
 .chart-container-bar{ 
